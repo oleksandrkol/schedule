@@ -11,7 +11,8 @@ object Environment {
 
 
   def setup () {
-    System.setProperty("hadoop.home.dir", "C:\\\\hadoop\\\\")
+    val hadoopFilePath = getClass.getClassLoader.getResource("hadoop").getPath
+    System.setProperty("hadoop.home.dir", hadoopFilePath)
 
     FileUtil.fullyDelete(new File("src/main/resources/tmp/"))
     FileUtil.fullyDelete(new File("src/main/resources/output/"))
